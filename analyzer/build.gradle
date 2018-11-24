@@ -1,0 +1,38 @@
+buildscript {
+	ext {
+		springBootVersion = '2.1.0.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'org.pszybicki.taiding'
+version = '1.0.0-SNAPSHOT'
+sourceCompatibility = 1.9
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {
+	implementation('org.springframework.boot:spring-boot-starter-actuator')
+	implementation('org.springframework.boot:spring-boot-starter-data-jpa')
+	implementation('org.springframework.boot:spring-boot-starter-webflux')
+	runtimeOnly('com.h2database:h2')
+	testImplementation('org.springframework.boot:spring-boot-starter-test')
+	testImplementation('io.projectreactor:reactor-test')
+    compile('org.projectlombok:lombok:1.18.4')
+    testCompile("org.assertj:assertj-core:3.11.1")
+	//implementation('org.springframework.boot:spring-boot-starter-data-mongodb-reactive')
+	//runtimeOnly('org.postgresql:postgresql')
+	//implementation('de.flapdoodle.embed:de.flapdoodle.embed.mongo')
+}
